@@ -35,8 +35,8 @@ const UserPage = () => {
     }
   }
 
-  const deleteUser = () => {
-    setTable(table.filter((id) => table.id !== id));
+  const deleteUser = (id) => {
+    setTable((prev) => prev.filter((_, i) => i !== id));
   };
 
   const handleChange = (event) => {
@@ -110,7 +110,18 @@ const UserPage = () => {
                 website: value.website,
               }}
               deleteUser={deleteUser}
+              id={id}
             />
+            // <div className="row " key={id}>
+            //   <div className="cell column">{value.name}</div>
+            //   <div className="cell column">{value.username}</div>
+            //   <div className="cell column">{value.email}</div>
+            //   <div className="cell column">{value.phone}</div>
+            //   <div className="cell column">{value.website}</div>
+            //   <button className="cell column" onClick={() => deleteUser(id)}>
+            //     DELETE
+            //   </button>
+            // </div>
           ))}
         </div>
       ) : (
